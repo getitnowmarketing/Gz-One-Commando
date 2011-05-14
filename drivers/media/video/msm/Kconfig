@@ -1,0 +1,47 @@
+comment "Camera Sensor Selection"
+config IUS006F
+	bool "Sensor ius006f (Sony 5M)"
+	depends on MSM_CAMERA
+	default y
+	---help---
+	  Sony 5M with Autofocus
+
+config MSM_CAMERA_FLASH
+	bool "Qualcomm MSM camera flash support"
+	depends on MSM_CAMERA
+	default y
+	---help---
+	  Enable support for LED flash for msm camera
+
+config MSM_GEMINI
+	tristate "Qualcomm MSM Gemini Jpeg Engine support"
+	depends on MSM_CAMERA && (ARCH_MSM7X30 || ARCH_MSM8X60)
+	default M
+	---help---
+	  Enable support for Gemini Jpeg Engine
+
+config CAMCMP
+	bool "Camera Component"
+	depends on MSM_CAMERA
+	default y
+	---help---
+	  Camera Component
+
+config MSM_VPE
+	tristate "Qualcomm MSM Video Pre-processing Engine support"
+	depends on MSM_CAMERA && (ARCH_MSM7X30 || ARCH_MSM8X60)
+	default y
+	---help---
+	  Enable support for Video Pre-processing Engine
+
+config QUP_EXCLUSIVE_TO_CAMERA
+	bool "QUP exclusive to camera"
+	depends on MSM_CAMERA
+	default y
+	---help---
+	  This flag enabled states that QUP
+	  is exclusive to camera. In case this
+	  is disabled, the lvs1 voltage is enabled
+	  by QUP in the board file as QUP is used by
+	  applications other than camera.
+
